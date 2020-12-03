@@ -1,16 +1,15 @@
 package main
 
 import (
+	"adventofcode/utils"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	passwords, err := getData()
+	passwords, err := utils.GetData("2")
 	if err != nil {
 		log.Fatal("error load file data", err)
 	}
@@ -38,16 +37,4 @@ func main() {
 	}
 	println(fmt.Sprintf("fst pt: %d", validPassCount))
 	println(fmt.Sprintf("snd pt: %d", validPassCountSecond))
-}
-
-func getData() ([]string, error) {
-	path, err := os.Getwd()
-	if err != nil {
-		return nil, err
-	}
-	data, err := ioutil.ReadFile(path + "/2020/2/input.txt")
-	if err != nil {
-		return nil, err
-	}
-	return strings.Split(string(data), "\n"), nil
 }
