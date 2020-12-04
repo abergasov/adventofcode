@@ -17,3 +17,12 @@ func GetData(pass string) ([]string, error) {
 	}
 	return strings.Split(string(data), "\n"), nil
 }
+
+func StringInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if b == a {
+			return true
+		}
+	}
+	return false
+}
