@@ -3,6 +3,7 @@ package utils
 import (
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -16,6 +17,18 @@ func GetData(pass string) ([]string, error) {
 		return nil, err
 	}
 	return strings.Split(string(data), "\n"), nil
+}
+
+func Convert2Int(s []string) []int {
+	resp := make([]int, 0, len(s))
+	for _, i := range s {
+		ii, err := strconv.Atoi(i)
+		if err != nil {
+			continue
+		}
+		resp = append(resp, ii)
+	}
+	return resp
 }
 
 func StringInSlice(a string, list []string) bool {
